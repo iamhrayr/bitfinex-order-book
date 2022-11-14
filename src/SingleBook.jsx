@@ -8,20 +8,22 @@ const SingleBook = ({ data, reverse }) => {
     <div style={{ padding: "10px" }}>
       <table>
         <thead>
-          {tableTh.map((column) => (
-            <th>{column}</th>
-          ))}
+          <tr>
+            {tableTh.map((column, index) => (
+              <th key={index}>{column}</th>
+            ))}
+          </tr>
         </thead>
 
         <tbody>
-          {data.map(({ price, cnt, amount }) => {
+          {data.map(({ price, cnt, amount }, index) => {
             let tableTd = [amount, cnt, price];
             if (reverse) tableTd.reverse();
 
             return (
-              <tr>
-                {tableTd.map((column) => (
-                  <th>{column}</th>
+              <tr key={index}>
+                {tableTd.map((column, index) => (
+                  <th key={index}>{column}</th>
                 ))}
               </tr>
             );
